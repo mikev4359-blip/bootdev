@@ -1,10 +1,17 @@
-def get_book_text(path_to_file: str):
-    with open(path_to_file) as f:
-        file_contents = f.read()
-    return file_contents
+def count_words(book: str):
 
-def count_words():
-    text = get_book_text("books/frankenstein.txt")
+    words = len(book.split())
 
-    words = len(text.split())
-    print(f"Found {words} total words")
+    return words
+
+def create_dict(book: str):
+    lowercase = book.lower()
+    full_dict = {}
+
+    for letter in lowercase:
+        if letter in full_dict:
+            full_dict[letter] += 1
+        else:
+            full_dict[letter] = 1
+
+    return full_dict
