@@ -1,4 +1,5 @@
 from stats import count_words, create_dict, chars_dict_to_sorted_list
+import sys
 
 def get_book_text(path_to_file: str):
     with open(path_to_file) as f:
@@ -17,9 +18,12 @@ def print_report(book_path, word_count, sorted_list):
             continue
     print("============= END ===============")
 
+if len(sys.argv) < 2:
+    print(f"Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
-book_link = "books/frankenstein.txt..."
-book_contents = get_book_text("books/frankenstein.txt")
+book_link = sys.argv[1]
+book_contents = get_book_text(sys.argv[1])
 count = count_words(book_contents)
 letter_counts = create_dict(book_contents)
 sorted_list = chars_dict_to_sorted_list(letter_counts)
